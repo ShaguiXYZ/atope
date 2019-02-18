@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" >
-<head>
-<meta charset="UTF-8" />
-<title>Insert title here</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+<head th:replace="/layout/layout :: head">
 </head>
 <body>
+	<header th:replace="/layout/layout :: header"></header>
+
 	<div class="container">
 		<h1
 			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
@@ -32,12 +30,13 @@
 					<td th:text="${user.mail}"></td>
 					<td th:text="${user.fechaBaja}"></td>
 					<td><a class="btn btn-primary btn-xs" th:href="@{/formuser/} + ${user.id}" th:text="'editar'"></a></td>
-					<td><a class="btn btn-danger btn-xs" th:href="@{/eliminaruser/} + ${user.id}" th:text="'eliminar'" onclick="return confirm('EstÃ¡s seguro que quieres eliminar?');"></a></td>
+					<td><a class="btn btn-danger btn-xs" th:href="@{/eliminaruser/} + ${user.id}" th:text="'eliminar'" onclick="return confirm('Estás seguro que quieres eliminar?');"></a></td>
 				</tr>
 			</tbody>
 
 		</table>
 	</div>
 
+<footer th:replace="/layout/layout :: footer"></footer>
 </body>
 </html>

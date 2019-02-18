@@ -22,29 +22,29 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 8244780157269809666L;
 
 	@Id
-	@Column(name = "usu_pk")
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "usu_uk_codigo", unique = true, nullable = false)
+	@Column(name = "uk_codigo", unique = true, nullable = false)
 	private String uid;
 
-	@Column(name = "usu_nombre", nullable = false)
+	@Column(name = "nombre", nullable = false)
 	private String nombre;
 
-	@Column(name = "usu_apellido1")
+	@Column(name = "apellido1")
 	private String apellido1;
 	
-	@Column(name = "usu_apellido2")
+	@Column(name = "apellido2")
 	private String apellido2;
 	
-	@Column(name = "usu_contrasena", nullable = false)
+	@Column(name = "contrasena", nullable = false)
 	private String contrasena;
 	
-	@Column(name = "usu_fecha_baja")
+	@Column(name = "fecha_baja")
 	private Long fechaBaja;
 	
-	@Column(name = "usu_mail", nullable = false)
+	@Column(name = "mail", nullable = false)
 	private String mail;
 	
 	/**
