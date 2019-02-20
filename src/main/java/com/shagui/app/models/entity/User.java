@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 /**
  * @author Grego
@@ -22,29 +23,32 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 8244780157269809666L;
 
 	@Id
-	@Column(name = "id")
+	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "uk_codigo", unique = true, nullable = false)
+	@Column(unique = true, nullable = false)
+	@NotEmpty
 	private String uid;
 
-	@Column(name = "nombre", nullable = false)
+	@Column(nullable = false)
+	@NotEmpty
 	private String nombre;
 
-	@Column(name = "apellido1")
+	@Column
 	private String apellido1;
 	
-	@Column(name = "apellido2")
+	@Column
 	private String apellido2;
 	
-	@Column(name = "contrasena", nullable = false)
+	@Column(nullable = false)
+	@NotEmpty
 	private String contrasena;
 	
 	@Column(name = "fecha_baja")
 	private Long fechaBaja;
 	
-	@Column(name = "mail", nullable = false)
+	@Column(nullable = false)
 	private String mail;
 	
 	/**

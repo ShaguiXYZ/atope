@@ -28,7 +28,7 @@ public class UserControler {
 	/**
 	 * @return
 	 */
-	@RequestMapping(value="/listaUsuarios", method=RequestMethod.GET)
+	@RequestMapping(value= {"/", "/listaUsuarios"}, method=RequestMethod.GET)
 	public String ListaUsusarios(Model model) {
 		List<User> users = service.findAll();
 		
