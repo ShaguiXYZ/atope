@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.shagui.app.models.dao.IUserDao;
-import com.shagui.app.models.entity.User;
+import com.shagui.app.models.dao.IUsuarioDao;
+import com.shagui.app.models.entity.Usuario;
 
 /**
  * @author Grego
@@ -21,21 +21,21 @@ import com.shagui.app.models.entity.User;
 public class UserServiceImpl implements IUserService {
 	
 	@Autowired
-	private IUserDao userDao;
+	private IUsuarioDao userDao;
 	
 	/* (non-Javadoc)
 	 * @see com.shagui.app.models.service.IUserService#findAll()
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<User> findAll() {
-		return (List<User>)userDao.findAll();
+	public List<Usuario> findAll() {
+		return (List<Usuario>)userDao.findAll();
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public User findOne(Integer id) {
-		Optional<User> user = userDao.findById(id);
+	public Usuario findOne(Long id) {
+		Optional<Usuario> user = userDao.findById(id);
 		return user.get();
 	}
 
@@ -43,8 +43,8 @@ public class UserServiceImpl implements IUserService {
 	 * @see com.shagui.app.models.service.IUserService#findOne(java.lang.String)
 	 */
 	@Override
-	public User findOne(String uid) {
-		return userDao.findOne(uid);
+	public Usuario findOne(String uid) {
+		return userDao.findByUsername(uid);
 	}
 
 	/* (non-Javadoc)
@@ -52,7 +52,7 @@ public class UserServiceImpl implements IUserService {
 	 */
 	@Override
 	@Transactional
-	public void save(User user) {
+	public void save(Usuario user) {
 		userDao.save(user);
 	}
 
@@ -61,7 +61,7 @@ public class UserServiceImpl implements IUserService {
 	 */
 	@Override
 	@Transactional
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		userDao.delete(findOne(id));
 	}
 

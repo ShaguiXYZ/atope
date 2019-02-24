@@ -1,17 +1,21 @@
 package com.shagui.app;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * @author Grego
  *
  */
 @SpringBootApplication
-public class ServletInitializer extends SpringBootServletInitializer {
+public class ServletInitializer implements CommandLineRunner {
 
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
 	/**
 	 * @param args
 	 */
@@ -20,12 +24,17 @@ public class ServletInitializer extends SpringBootServletInitializer {
 	}
 
 	/* (non-Javadoc)
-	 * @see org.springframework.boot.web.servlet.support.SpringBootServletInitializer#configure(org.springframework.boot.builder.SpringApplicationBuilder)
+	 * @see org.springframework.boot.CommandLineRunner#run(java.lang.String[])
 	 */
 	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(ServletInitializer.class);
+	public void run(String... args) throws Exception {
+		String password = "12345";
+		
+		for(int i=0; i<2; i++) {
+			String bcryptPassword = passwordEncoder.encode(password);
+			System.out.println(bcryptPassword);
+		}
 	}
-
+	
 }
 
