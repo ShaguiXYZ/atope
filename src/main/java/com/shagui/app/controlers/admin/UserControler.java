@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.shagui.app.models.entity.Usuario;
 import com.shagui.app.models.service.IUserService;
+import com.shagui.app.resources.Ctes;
 
 /**
  * @author Grego
@@ -29,8 +30,8 @@ public class UserControler {
 	/**
 	 * @return
 	 */
-	@Secured("ROLE_USER")
-	@RequestMapping(value= {"/", "/listaUsuarios"}, method=RequestMethod.GET)
+	@Secured(Ctes.ROLES.USER)
+	@RequestMapping(value= {"/listaUsuarios"}, method=RequestMethod.GET)
 	public String ListaUsusarios(Model model) {
 		List<Usuario> users = service.findAll();
 		
@@ -44,7 +45,7 @@ public class UserControler {
 	 * @param model
 	 * @return
 	 */
-	@Secured("ROLE_ADMIN")
+	@Secured(Ctes.ROLES.ADMIN)
 	@RequestMapping(value="/formuser/{id}", method=RequestMethod.GET)
 	public String editUser(@PathVariable(value="id") Long id, Model model) {
 		Usuario user = service.findOne(id);
@@ -57,7 +58,7 @@ public class UserControler {
 	 * @param user
 	 * @return
 	 */
-	@Secured("ROLE_ADMIN")
+	@Secured(Ctes.ROLES.ADMIN)
 	@RequestMapping(value="/saveuser", method=RequestMethod.POST)
 	public String saveUser(Usuario user) {
 		service.save(user);

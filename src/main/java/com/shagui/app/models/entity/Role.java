@@ -18,7 +18,7 @@ import javax.persistence.UniqueConstraint;
  *
  */
 @Entity
-@Table(name = "authorities", uniqueConstraints = { @UniqueConstraint(columnNames = { "user_id", "authority" }) })
+@Table(name = "authorities", uniqueConstraints = { @UniqueConstraint(columnNames = { "user_id", "authority" })})
 public class Role implements Serializable {
 
 	/**

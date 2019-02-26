@@ -13,7 +13,7 @@ public class Ctes {
 	 *
 	 */
 	public static interface ROLES {
-		final String ADMIN = "ADMIN";
-		final String USER = "USER";
+		final String ADMIN = "ROLE_ADMIN";
+		final String USER = "ROLE_USER";
 	}
 }

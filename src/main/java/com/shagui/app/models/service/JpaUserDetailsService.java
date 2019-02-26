@@ -39,7 +39,7 @@ public class JpaUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 		Usuario usuario = usuarioDao.findByUsername(username);
-        
+		
         if(usuario == null) {
         	logger.error("Error en el Login: no existe el usuario '" + username + "' en el sistema!");
         	throw new UsernameNotFoundException("Username: " + username + " no existe en el sistema!");
