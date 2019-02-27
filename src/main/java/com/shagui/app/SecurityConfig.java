@@ -17,7 +17,7 @@ import com.shagui.app.models.service.JpaUserDetailsService;
  */
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 @Configuration
-public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private LoginSuccessHandler successHandler;
