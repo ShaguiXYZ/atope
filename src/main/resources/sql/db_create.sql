@@ -45,45 +45,6 @@ CREATE TABLE `personas` (
 
 CREATE TABLE `issues` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tracker_id` int(11) DEFAULT NULL,
-  `project_id` int(11) DEFAULT NULL,
-  `subject` varchar(255) DEFAULT '',
-  `description` longtext,
-  `due_date` date DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  `status_id` int(11) DEFAULT NULL,
-  `assigned_to_id` int(11) DEFAULT NULL,
-  `priority_id` int(11) DEFAULT NULL,
-  `fixed_version_id` int(11) DEFAULT NULL,
-  `author_id` int(11) DEFAULT NULL,
-  `lock_version` int(11) DEFAULT '0',
-  `created_on` datetime DEFAULT NULL,
-  `updated_on` datetime DEFAULT NULL,
-  `start_date` date DEFAULT NULL,
-  `done_ratio` int(11) DEFAULT '0',
-  `estimated_hours` float DEFAULT NULL,
-  `parent_id` int(11) DEFAULT NULL,
-  `root_id` int(11) DEFAULT NULL,
-  `lft` int(11) DEFAULT NULL,
-  `rgt` int(11) DEFAULT NULL,
-  `is_private` tinyint(1) DEFAULT '0',
-  `closed_on` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `issues_project_id` (`project_id`),
-  KEY `index_issues_on_status_id` (`status_id`),
-  KEY `index_issues_on_category_id` (`category_id`),
-  KEY `index_issues_on_assigned_to_id` (`assigned_to_id`),
-  KEY `index_issues_on_fixed_version_id` (`fixed_version_id`),
-  KEY `index_issues_on_tracker_id` (`tracker_id`),
-  KEY `index_issues_on_priority_id` (`priority_id`),
-  KEY `index_issues_on_author_id` (`author_id`),
-  KEY `index_issues_on_created_on` (`created_on`),
-  KEY `index_issues_on_root_id_and_lft_and_rgt` (`root_id`,`lft`,`rgt`),
-  KEY `index_issues_on_parent_id` (`parent_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000071 DEFAULT CHARSET=utf8;
-
-CREATE TABLE `issues` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
   `author_id` int(11) DEFAULT NULL,
   `assigned_to_id` int(11) DEFAULT NULL,
   `tracker_id` int(11) DEFAULT NULL,
@@ -111,6 +72,10 @@ CREATE TABLE `issues` (
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `fk_author_idx` (`author_id`),
   KEY `fk_iss_assigned_idx` (`assigned_to_id`),
+  KEY `fk_iss_iss_parent_idx` (`parent_id`),
+  KEY `fk_iss_iss_root_idx` (`root_id`),
   CONSTRAINT `fk_iss_assigned` FOREIGN KEY (`assigned_to_id`) REFERENCES `personas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_iss_author` FOREIGN KEY (`author_id`) REFERENCES `personas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_iss_author` FOREIGN KEY (`author_id`) REFERENCES `personas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_iss_iss_parent` FOREIGN KEY (`parent_id`) REFERENCES `issues` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_iss_iss_root` FOREIGN KEY (`root_id`) REFERENCES `issues` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=1000071 DEFAULT CHARSET=utf8;

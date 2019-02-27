@@ -51,7 +51,7 @@ public class Issue implements Serializable {
 	private Integer fixedVersionId;
 
 	@Column(name = "is_private")
-	private byte isPrivate;
+	private Boolean isPrivate;
 
 	private Integer lft;
 
@@ -70,7 +70,7 @@ public class Issue implements Serializable {
 	private Integer rgt;
 
 	@Column(name = "root_id")
-	private Integer rootId;
+	private Long rootId;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "start_date")
@@ -179,11 +179,11 @@ public class Issue implements Serializable {
 		this.fixedVersionId = fixedVersionId;
 	}
 
-	public byte getIsPrivate() {
+	public Boolean getIsPrivate() {
 		return this.isPrivate;
 	}
 
-	public void setIsPrivate(byte isPrivate) {
+	public void setIsPrivate(Boolean isPrivate) {
 		this.isPrivate = isPrivate;
 	}
 
@@ -235,11 +235,11 @@ public class Issue implements Serializable {
 		this.rgt = rgt;
 	}
 
-	public int getRootId() {
+	public Long getRootId() {
 		return this.rootId;
 	}
 
-	public void setRootId(int rootId) {
+	public void setRootId(Long rootId) {
 		this.rootId = rootId;
 	}
 
