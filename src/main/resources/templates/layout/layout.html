@@ -3,8 +3,8 @@
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
 	<meta charset="UTF-8" />
-	<title
-		th:text="'Spring Boot: MVC + Thymeleaf + Data JPA - ' + ${titulo}"></title>
+	<title th:text="'Spring Boot: MVC + Thymeleaf + Data JPA - ' + ${titulo}"></title>
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">	</footer>
 	<!-- link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" / -->
 	<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />
@@ -62,6 +62,7 @@
 	<div class="container"></div>
 
 	<footer th:fragment="footer" class="container">
+		<img alt="" th:src="@{/images/logo.png}" />
 		<hr />
 		<p sec:authorize="isAuthenticated()">
 			Usuario logeado: <span sec:authentication="name"></span> | Roles: <span
@@ -83,5 +84,6 @@
 		<script th:src="@{/js/popper.min.js}"></script>
 		<script th:src="@{/js/bootstrap.min.js}"></script>
 		<script th:src="@{/js/jquery-ui.min.js}"></script>
+	</footer>
 </body>
 </html>

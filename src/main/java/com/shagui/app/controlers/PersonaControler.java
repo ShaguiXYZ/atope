@@ -31,13 +31,13 @@ public class PersonaControler {
 	 * @return
 	 */
 	@Secured(Ctes.ROLES.USER)
-	@RequestMapping(value= {"/", "/personas"}, method=RequestMethod.GET)
+	@RequestMapping(value= {"/personas"}, method=RequestMethod.GET)
 	public String listaPersonas(Model model) {
 		List<Persona> personas = service.findAll();
 		
 		model.addAttribute("personas", personas);
 		
-		return "/personas/list";
+		return "personas/list";
 	}
 	
 	/**
@@ -50,7 +50,7 @@ public class PersonaControler {
 		Persona persona = new Persona();
 		model.addAttribute("persona", persona);
 		
-		return "/personas/edit";
+		return "personas/edit";
 	}
 	
 	/**
@@ -63,7 +63,7 @@ public class PersonaControler {
 		Persona persona = service.findOne(id);
 		model.addAttribute("persona", persona);
 		
-		return "/personas/edit";
+		return "personas/edit";
 	}
 	
 	/**
@@ -76,7 +76,7 @@ public class PersonaControler {
 	public String deletePersona(@PathVariable(value="id") Long id, Model model) {
 		service.delete(id);
 		
-		return "/personas/list";
+		return "personas/list";
 	}
 	
 	/**
@@ -87,7 +87,7 @@ public class PersonaControler {
 	public String savePersona(Persona persona) {
 		service.save(persona);
 		
-		return "/personas/list";
+		return "personas/list";
 	}
 
 }
