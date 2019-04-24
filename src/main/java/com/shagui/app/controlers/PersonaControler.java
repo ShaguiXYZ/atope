@@ -18,10 +18,9 @@ import com.shagui.app.models.service.IPersonaService;
 import com.shagui.app.resources.Ctes;
 
 /**
- * @author gromera
+ * @author Shagui
  *
  */
-@Secured(Ctes.ROLES.USER)
 @Controller
 public class PersonaControler {
 	
@@ -31,13 +30,27 @@ public class PersonaControler {
 	/**
 	 * @return
 	 */
-	@RequestMapping(value= {"/", "/listaPersonas"}, method=RequestMethod.GET)
-	public String ListaPersonas(Model model) {
+	@Secured(Ctes.ROLES.USER)
+	@RequestMapping(value= {"/", "/personas"}, method=RequestMethod.GET)
+	public String listaPersonas(Model model) {
 		List<Persona> personas = service.findAll();
 		
 		model.addAttribute("personas", personas);
 		
-		return "/listaPersonas";
+		return "/personas/list";
+	}
+	
+	/**
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/formpersona", method=RequestMethod.GET)
+	public String newUser(Model model) {
+		Persona persona = new Persona();
+		model.addAttribute("persona", persona);
+		
+		return "/personas/edit";
 	}
 	
 	/**
@@ -50,7 +63,20 @@ public class PersonaControler {
 		Persona persona = service.findOne(id);
 		model.addAttribute("persona", persona);
 		
-		return "/editPersona";
+		return "/personas/edit";
+	}
+	
+	/**
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+	@Secured(Ctes.ROLES.ADMIN)
+	@RequestMapping(value="/deletepersona/{id}", method=RequestMethod.GET)
+	public String deletePersona(@PathVariable(value="id") Long id, Model model) {
+		service.delete(id);
+		
+		return "/personas/list";
 	}
 	
 	/**
@@ -58,10 +84,10 @@ public class PersonaControler {
 	 * @return
 	 */
 	@RequestMapping(value="/savepersona", method=RequestMethod.POST)
-	public String saveUser(Persona persona) {
+	public String savePersona(Persona persona) {
 		service.save(persona);
 		
-		return "/listaPersonas";
+		return "/personas/list";
 	}
 
 }

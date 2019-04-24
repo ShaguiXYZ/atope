@@ -38,6 +38,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
+		
 		<!-- Para compilar JSP -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
@@ -87,6 +88,12 @@
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>shagui</groupId>
+			<artifactId>shagui</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>		
 	</dependencies>
 
 	<build>

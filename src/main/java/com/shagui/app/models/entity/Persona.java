@@ -5,16 +5,20 @@ package com.shagui.app.models.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 /**
- * @author gromera
+ * @author Shagui
  *
  */
 @Entity
@@ -48,7 +52,11 @@ public class Persona implements Serializable {
 
 	@Column(nullable = false)
 	private String mail;
-
+	
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id")
+	private Usuario user;
+	
 	/**
 	 * @return the id
 	 */
@@ -145,6 +153,20 @@ public class Persona implements Serializable {
 	 */
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+
+	/**
+	 * @return the user
+	 */
+	public Usuario getUser() {
+		return user;
+	}
+
+	/**
+	 * @param user the user to set
+	 */
+	public void setUser(Usuario user) {
+		this.user = user;
 	}
 
 }

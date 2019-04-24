@@ -4,12 +4,12 @@
 package com.shagui.app.resources;
 
 /**
- * @author gromera
+ * @author Shagui
  *
  */
 public class Ctes {
 	/**
-	 * @author gromera
+	 * @author Shagui
 	 *
 	 */
 	public static interface ROLES {

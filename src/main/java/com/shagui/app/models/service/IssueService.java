@@ -11,7 +11,7 @@ import com.shagui.app.models.dao.IIssueDao;
 import com.shagui.app.models.entity.Issue;
 
 /**
- * @author gromera
+ * @author Shagui
  *
  */
 public class IssueService implements IIssueService {

@@ -32,6 +32,9 @@ public class UserServiceImpl implements IUserService {
 		return (List<Usuario>)userDao.findAll();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.shagui.app.models.service.IUserService#findOne(java.lang.Long)
+	 */
 	@Override
 	@Transactional(readOnly = true)
 	public Usuario findOne(Long id) {

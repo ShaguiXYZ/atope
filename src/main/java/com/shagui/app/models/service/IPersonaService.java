@@ -14,6 +14,6 @@ import com.shagui.app.models.entity.Persona;
 public interface IPersonaService {
 	public List<Persona> findAll();
 	public Persona findOne(Long id);
-	public void save(Persona user);
+	public void save(Persona persona);
 	public void delete(Long id);
 }

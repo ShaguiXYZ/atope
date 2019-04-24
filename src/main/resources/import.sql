@@ -32,5 +32,5 @@ LIMIT 0, 1000
 
 -- Date: 2019-02-27 11:46
 */
-INSERT INTO `atopesys.persona` (`id`,`user_id`,`nombre`,`apellido1`,`apellido2`,`mail`,`fecha_alta`,`fecha_baja`) VALUES (1,1,'administrador',NULL,NULL,'system@atope',NULL,NULL);
-INSERT INTO `atopesys.persona` (`id`,`user_id`,`nombre`,`apellido1`,`apellido2`,`mail`,`fecha_alta`,`fecha_baja`) VALUES (2,2,'usuario',NULL,NULL,'atope@atope',NULL,NULL);
+INSERT INTO `atopesys.personas` (`id`,`user_id`,`nombre`,`apellido1`,`apellido2`,`mail`,`fecha_alta`,`fecha_baja`) VALUES (1,1,'administrador',NULL,NULL,'system@atope',NULL,NULL);
+INSERT INTO `atopesys.personas` (`id`,`user_id`,`nombre`,`apellido1`,`apellido2`,`mail`,`fecha_alta`,`fecha_baja`) VALUES (2,2,'usuario',NULL,NULL,'atope@atope',NULL,NULL);
